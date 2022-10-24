@@ -40,6 +40,7 @@ public class ClienteRestController {
 	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente create(@RequestBody Cliente cliente) {
+		cliente.setCreateAt(new Date());
 		return clienteService.save(cliente);
 	}
 	
@@ -49,8 +50,8 @@ public class ClienteRestController {
 		Cliente clienteActual = clienteService.findById(id);
 		
 		clienteActual.setApellido(cliente.getApellido());
-		clienteActual.setApellido(cliente.getNombre());
-		clienteActual.setApellido(cliente.getEmail());
+		clienteActual.setNombre(cliente.getNombre());
+		clienteActual.setEmail(cliente.getEmail());
 		
 		return clienteService.save(clienteActual);
 	}
