@@ -109,7 +109,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
-	@PutMapping("clientes/{id}")
+	@PutMapping("/clientes/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, @PathVariable Long id) {
 		Cliente clienteActual = clienteService.findById(id);
 		Cliente clienteUpdate = null;
@@ -156,7 +156,7 @@ public class ClienteRestController {
 		response.put("mensaje", "El cliente ha sido actualizado con éxito!");
 		response.put("cliente", clienteUpdate);
 
-		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("clientes/{id}")
